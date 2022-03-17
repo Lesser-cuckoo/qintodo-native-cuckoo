@@ -1,6 +1,7 @@
 import { VFC } from "react";
-import { TouchableOpacity, Text, View } from "react-native";
-import { AiOutlinePlus } from "react-icons/ai";
+import { TouchableOpacity, Text } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+
 import tw from "twrnc";
 
 export type bgProps = {
@@ -34,7 +35,9 @@ export const PrimaryButton: VFC<Props> = (props) => {
       style={tw`bg-[${bgColor}] rounded-3xl p-4 px-6 flex-row  items-center`}
       onPress={onPress}
     >
-      {isIcon && <AiOutlinePlus style={tw`text-white font-bold`} />}
+      {isIcon && (
+        <AntDesign name="plus" style={tw`text-white font-extrabold pr-2`} />
+      )}
       <Text style={tw`text-${text} font-bold`}>{children}</Text>
     </TouchableOpacity>
   );
