@@ -1,30 +1,24 @@
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
 import { Provider as PaperProvider, RadioButton } from "react-native-paper";
 import { RadioButtonComponent } from "./components/ui/radiobutton";
-// import { RadioButton } from "./components/ui/radiobutton";
-// import { RadioButton } from "./components/ui/radiobutton";
+import { Text, View } from "react-native";
+import tw from "twrnc";
+import React from "react";
 
-export default function App() {
+const App = () => {
   return (
     <PaperProvider>
-      <View style={styles.container}>
-        {/* <Text>Open up App.tsx to start working on your app!</Text> */}
-        {/* <StatusBar style="auto" /> */}
+      <View style={tw`flex-1 justify-center items-center bg-sky-200`}>
+        <Text style={tw`text-2xl text-red-700 font-bold`}>
+          Tailwind CSS on React Native!!!
+        </Text>
+        <StatusBar style="auto" />
         <RadioButtonComponent color="today" />
         <RadioButtonComponent color="tomorrow" />
         <RadioButtonComponent color="other" />
       </View>
     </PaperProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+export default App;
