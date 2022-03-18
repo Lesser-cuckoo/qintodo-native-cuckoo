@@ -25,19 +25,21 @@ type Props = {
   onPress: () => void | Promise<void>;
   isIcon?: boolean;
   text: "black" | "white";
+  size: "modal" | "md" | "lg";
 };
 
 export const PrimaryButton: VFC<Props> = (props) => {
-  const { bgColor, children, onPress, isIcon, text } = props;
+  const { bgColor, children, onPress, isIcon, text, size } = props;
+  const mdStyle = tw`bg-[${bgColor}] rounded-3xl p-3 px-5 flex-row  items-center mx-1`;
+  const lgStyle = tw`bg-[${bgColor}] rounded-3xl p-3 px-28 flex-row  items-center mx-1`;
+  const modalStyle = tw`bg-[${bgColor}] rounded-3xl  py-3 w-28 flex-row  items-center mx-1 justify-center`;
 
   return (
     <TouchableOpacity
-      style={tw`bg-[${bgColor}] rounded-3xl p-4 px-6 flex-row  items-center`}
+      style={size === "md" ? mdStyle : size === "lg" ? lgStyle : modalStyle}
       onPress={onPress}
     >
-      {isIcon && (
-        <AntDesign name="plus" style={tw`text-white font-extrabold pr-2`} />
-      )}
+      {isIcon && <AntDesign name="plus" style={tw`text-white pr-2`} />}
       <Text style={tw`text-${text} font-bold`}>{children}</Text>
     </TouchableOpacity>
   );

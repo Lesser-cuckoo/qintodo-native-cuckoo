@@ -44,6 +44,7 @@ const App = () => {
             children={props.children}
             text="white"
             isIcon={true}
+            size="md"
           />
         ))}
       </View>
@@ -52,18 +53,21 @@ const App = () => {
         onPress={() => alert("blue")}
         children="保存する"
         text="white"
+        size="lg"
       />
       <PrimaryButton
         bgColor={bgColor.red}
-        onPress={() => alert("blue")}
+        onPress={() => alert("red")}
         children="OK"
         text="white"
+        size="modal"
       />
       <PrimaryButton
         bgColor={bgColor.gray}
-        onPress={() => alert("blue")}
+        onPress={() => alert("gray")}
         children="キャンセル"
         text="black"
+        size="modal"
       />
       <StatusBar style="auto" />
     </View>
