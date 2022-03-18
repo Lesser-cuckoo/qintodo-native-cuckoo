@@ -31,7 +31,7 @@ const App = () => {
     },
   ];
   return (
-    <View style={tw`flex-1 justify-center items-center bg-sky-200`}>
+    <View style={tw`flex-1 justify-center items-center`}>
       <Text style={tw`text-2xl text-red-700 font-bold`}>
         Tailwind CSS on React Native!!!
       </Text>
@@ -66,6 +66,20 @@ const App = () => {
         bgColor={bgColor.gray}
         onPress={() => alert("gray")}
         children="キャンセル"
+        text="black"
+        size="modal"
+      />
+      <PrimaryButton
+        bgColor={bgColor.blue}
+        onPress={() => alert("連携")}
+        children="連携する"
+        text="white"
+        size="modal"
+      />
+      <PrimaryButton
+        bgColor={bgColor.gray}
+        onPress={() => alert("解除")}
+        children="解除する"
         text="black"
         size="modal"
       />
