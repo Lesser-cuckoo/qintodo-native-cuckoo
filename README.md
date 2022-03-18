@@ -29,11 +29,11 @@ yarn start
 
 ### エミュレータでデバッグする場合
 
-xcodeやAndroid Studioを導入し、エミュレータを起動できるようにする。
+xcode や Android Studio を導入し、エミュレータを起動できるようにする。
 
 ### 実機でデバッグする場合
 
-Android・iPhoneにExpo Goをインストールし、QRコードを読み取る。
+Android・iPhone に Expo Go をインストールし、QR コードを読み取る。
 
 ## Git ブランチルール
 
