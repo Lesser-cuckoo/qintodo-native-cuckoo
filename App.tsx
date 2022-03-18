@@ -1,3 +1,4 @@
+import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
 import tw from "twrnc";
@@ -16,17 +17,17 @@ const App = () => {
   const buttonProps = [
     {
       bgColor: bgColor.today,
-      children: "今日する",
+      title: "今日する",
       str: "today",
     },
     {
       bgColor: bgColor.tomorrow,
-      children: "明日する",
+      title: "明日する",
       str: "tomorrow",
     },
     {
       bgColor: bgColor.other,
-      children: "今度する",
+      title: "今度する",
       str: "other",
     },
   ];
@@ -41,7 +42,7 @@ const App = () => {
             key={props.str}
             bgColor={props.bgColor}
             onPress={() => alert(props.str)}
-            children={props.children}
+            title={props.title}
             text="white"
             isIcon={true}
             size="md"
@@ -51,35 +52,35 @@ const App = () => {
       <PrimaryButton
         bgColor={bgColor.blue}
         onPress={() => alert("blue")}
-        children="保存する"
+        title="保存する"
         text="white"
         size="lg"
       />
       <PrimaryButton
         bgColor={bgColor.red}
         onPress={() => alert("red")}
-        children="OK"
+        title="OK"
         text="white"
         size="modal"
       />
       <PrimaryButton
         bgColor={bgColor.gray}
         onPress={() => alert("gray")}
-        children="キャンセル"
+        title="キャンセル"
         text="black"
         size="modal"
       />
       <PrimaryButton
         bgColor={bgColor.blue}
         onPress={() => alert("連携")}
-        children="連携する"
+        title="連携する"
         text="white"
         size="modal"
       />
       <PrimaryButton
         bgColor={bgColor.gray}
         onPress={() => alert("解除")}
-        children="解除する"
+        title="解除する"
         text="black"
         size="modal"
       />
