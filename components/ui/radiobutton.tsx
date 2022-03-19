@@ -16,7 +16,7 @@ export const RadioButtonComponent = (props: Props) => {
   const { color } = props;
   const [value, setValue] = useState("");
 
-  const handleOnPless = () => {
+  const handleOnPress = () => {
     if (value === "radio") {
       setValue("");
     } else {
@@ -25,11 +25,10 @@ export const RadioButtonComponent = (props: Props) => {
   };
 
   return (
-    <RadioButton.Group onValueChange={handleOnPless} value={value}>
+    <RadioButton.Group onValueChange={handleOnPress} value={value}>
       <RadioButton.Android
         value="radio"
         color={TaskColor[color]}
-        onPress={handleOnPless}
         // uncheckedColor={TaskColor[color]}
       />
     </RadioButton.Group>
