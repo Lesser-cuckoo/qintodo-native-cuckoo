@@ -3,6 +3,7 @@ import { TouchableOpacity, Text } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 import tw from "twrnc";
+import { VFC } from "react";
 
 export type bgProps = {
   red: "#EF4444";
@@ -28,7 +29,7 @@ type Props = {
   size: "modal" | "md" | "lg";
 };
 
-export const PrimaryButton = (props: Props) => {
+export const PrimaryButton: VFC<Props> = (props) => {
   const { bgColor, title, onPress, isIcon, text, size } = props;
   const mdStyle = tw`bg-[${bgColor}] rounded-3xl p-3 px-5 flex-row  items-center mx-1`;
   const lgStyle = tw`bg-[${bgColor}] rounded-3xl p-3 px-28 flex-row  items-center mx-1`;
