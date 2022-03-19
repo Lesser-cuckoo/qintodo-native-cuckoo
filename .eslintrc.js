@@ -18,6 +18,7 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint", "react-hooks", "prettier"],
   rules: {
+    "react/prop-types": "off",
     indent: ["error", 2],
     "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
