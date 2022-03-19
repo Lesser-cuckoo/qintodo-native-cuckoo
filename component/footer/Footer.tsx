@@ -16,7 +16,6 @@ export const bgColor = {
 
 export const Footer = () => {
   const [isFocus, setIsFocus] = useState<boolean>(false);
-  console.log(isFocus);
 
   const buttonProps = [
     {
