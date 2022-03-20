@@ -1,6 +1,6 @@
 import React from "react";
 import { Input } from "../ui/Input";
-import { View } from "react-native";
+import { KeyboardAvoidingView, View } from "react-native";
 import tw from "twrnc";
 import { PrimaryButton } from "../ui/PrimaryButton";
 import { useState } from "react";
@@ -35,22 +35,26 @@ export const Footer = () => {
     },
   ];
   return (
-    <View style={tw`border-t border-gray-300`}>
-      <Input setIsFocus={setIsFocus} />
-      <View style={tw`flex-row`}>
-        {isFocus &&
-          buttonProps.map((props) => (
-            <PrimaryButton
-              key={props.str}
-              bgColor={props.bgColor}
-              onPress={() => alert(props.str)}
-              title={props.title}
-              text="white"
-              isIcon={true}
-              size="md"
-            />
-          ))}
+    <KeyboardAvoidingView behavior="padding" style={tw`w-full mb-4`}>
+      <View
+        style={tw`border-t border-gray-300 py-2 flex justify-center items-center`}
+      >
+        <Input setIsFocus={setIsFocus} />
+        <View style={tw`flex-row`}>
+          {isFocus &&
+            buttonProps.map((props) => (
+              <PrimaryButton
+                key={props.str}
+                bgColor={props.bgColor}
+                onPress={() => alert(props.str)}
+                title={props.title}
+                text="white"
+                isIcon={true}
+                size="md"
+              />
+            ))}
+        </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };

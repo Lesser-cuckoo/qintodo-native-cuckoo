@@ -19,12 +19,12 @@ export const Input: VFC<Props> = (props) => {
   };
 
   return (
-    <View style={tw`m-2`}>
+    <View style={tw`my-2`}>
       <TextInput
         onBlur={onBlur}
         onFocus={onFocus}
         placeholder="タスクを入力する"
-        style={tw`bg-[#F1F5F9] py-3 px-4 w-80 rounded-2xl `}
+        style={tw`bg-[#F1F5F9] py-3 px-4 rounded-2xl w-90`}
       />
     </View>
   );
