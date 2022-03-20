@@ -1,8 +1,14 @@
 import React from "react";
 import { SetStateAction } from "react";
+import { useState } from "react";
 import { VFC } from "react";
 import { Dispatch } from "react";
-import { TextInput, View } from "react-native";
+import {
+  NativeSyntheticEvent,
+  TextInput,
+  TextInputChangeEventData,
+  View,
+} from "react-native";
 import tw from "twrnc";
 
 type Props = {
@@ -11,16 +17,22 @@ type Props = {
 
 export const Input: VFC<Props> = (props) => {
   const { setIsFocus } = props;
+  const [InputText, setInputText] = useState<string>("");
   const onFocus = () => {
     setIsFocus(true);
   };
   const onBlur = () => {
     setIsFocus(false);
   };
+  const onChangeText = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
+    setInputText(e.nativeEvent.text);
+  };
 
   return (
     <View style={tw`my-2`}>
       <TextInput
+        value={InputText}
+        onChange={onChangeText}
         onBlur={onBlur}
         onFocus={onFocus}
         placeholder="タスクを入力する"
