@@ -4,6 +4,7 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import tw from "twrnc";
 import { PrimaryButton } from "./component/ui/PrimaryButton";
+import { QinTodoIcon } from "./component/ui/QinTodoIcon";
 
 export const bgColor = {
   red: "#EF4444",
@@ -87,6 +88,7 @@ const App = () => {
       />
       <StatusBar style="auto" />
       <Avater />
+      <QinTodoIcon />
     </View>
   );
 };
