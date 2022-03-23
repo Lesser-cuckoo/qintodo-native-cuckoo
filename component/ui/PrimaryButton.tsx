@@ -1,9 +1,8 @@
 import React from "react";
+import type { VFC } from "react";
 import { TouchableOpacity, Text } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-
 import tw from "twrnc";
-import { VFC } from "react";
 
 export type bgProps = {
   red: "#EF4444";
@@ -28,6 +27,18 @@ type Props = {
   text: "black" | "white";
   size: "modal" | "md" | "lg";
 };
+
+/**
+ *
+ * @param props
+ * @type {`bgColor`: background color of button}
+ * @type {`title`: string}
+ * @type {`onPress`:  () => void | Promise<void>}
+ * @type {`isIcon`?: boolean (default: false)}
+ * @type {`text`: "black" | "white"}
+ * @type {`size`:  "modal" | "md" | "lg"}
+ * @returns JSX.Element
+ */
 
 export const PrimaryButton: VFC<Props> = (props) => {
   const { bgColor, title, onPress, isIcon, text, size } = props;
