@@ -2,7 +2,7 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Button, Text, View } from "react-native";
 import tw from "twrnc";
-import { PrimaryButton } from "../component/ui/PrimaryButton";
+import { PrimaryButton } from "src/components/ui/PrimaryButton";
 
 export const bgColor = {
   red: "#EF4444",

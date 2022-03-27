@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 import tw from "twrnc";
-import { PrimaryButton } from "../component/ui/PrimaryButton";
+import { PrimaryButton } from "src/components/ui/PrimaryButton";
 
 export const bgColor = {
   red: "#EF4444",
@@ -16,12 +16,12 @@ type Props = {
   navigation: any;
 };
 
-const ThemeScreen = (props: Props) => {
+const TermsOfServiceScreen = (props: Props) => {
   const { navigation } = props;
 
   return (
     <View style={tw`flex-1 justify-center items-center`}>
-      <Text style={tw`text-2xl text-red-700 font-bold`}>テーマ</Text>
+      <Text style={tw`text-2xl text-red-700 font-bold`}>利用規約</Text>
 
       <PrimaryButton
         bgColor={bgColor.blue}
@@ -34,4 +34,4 @@ const ThemeScreen = (props: Props) => {
   );
 };
 
-export default ThemeScreen;
+export default TermsOfServiceScreen;

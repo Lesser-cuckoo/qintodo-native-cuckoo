@@ -1,18 +1,22 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import TaskScreen from "./screens/TaskScreen";
-import ThemeScreen from "./screens/ThemeScreen";
-import AccountScreen from "./screens/AccountsScreen";
-import MyPageScreen from "./screens/MyPageScreen";
-import PrivacyPolicyScreen from "./screens/PrivacyPolicyScreen";
-import TermsOfServiceScreen from "./screens/TermsOfServiceScreen";
-import ProfileScreen from "./screens/ProfileScreen";
+import TaskScreen from "src/screens/TaskScreen";
+import ThemeScreen from "src/screens/ThemeScreen";
+import AccountScreen from "src/screens/AccountsScreen";
+import MyPageScreen from "src/screens/MyPageScreen";
+import PrivacyPolicyScreen from "src/screens/PrivacyPolicyScreen";
+import TermsOfServiceScreen from "src/screens/TermsOfServiceScreen";
+import ProfileScreen from "src/screens/ProfileScreen";
+import { Auth } from "src/components/Auth";
+import { UserContextProvider, useUser } from "src/components/UserContext";
 
 const Stack = createNativeStackNavigator();
 
-const App = () => {
-  return (
+const Container = () => {
+  const { user } = useUser();
+
+  return user ? (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
@@ -52,6 +56,16 @@ const App = () => {
         />
       </Stack.Navigator>
     </NavigationContainer>
+  ) : (
+    <Auth />
+  );
+};
+
+const App = () => {
+  return (
+    <UserContextProvider>
+      <Container />
+    </UserContextProvider>
   );
 };
 export default App;
