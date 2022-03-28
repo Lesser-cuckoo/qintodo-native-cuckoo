@@ -9,8 +9,6 @@ import PrivacyPolicyScreen from "./screens/PrivacyPolicyScreen";
 import TermsOfServiceScreen from "./screens/TermsOfServiceScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import { StatusBar } from "expo-status-bar";
-import tw from "twrnc";
-import { Footer } from "./component/footer/Footer";
 
 const Stack = createNativeStackNavigator();
 
@@ -55,7 +53,6 @@ const App = () => {
         />
       </Stack.Navigator>
       <StatusBar style="auto" />
-      <Footer />
     </NavigationContainer>
   );
 };
