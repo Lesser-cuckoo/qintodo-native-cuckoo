@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { Button, Text, View } from "react-native";
 import tw from "twrnc";
 import { PrimaryButton } from "../component/ui/PrimaryButton";
+import { RadioButtonComponent } from "../components/ui/radiobutton";
 
 export const bgColor = {
   red: "#EF4444",
@@ -89,6 +90,10 @@ const TaskScreen = (props: Props) => {
         text="black"
         size="modal"
       />
+      <RadioButtonComponent color="today" />
+      <RadioButtonComponent color="tomorrow" />
+      <RadioButtonComponent color="other" />
+
       <StatusBar style="auto" />
       <Button
         title="MyPageへ"
