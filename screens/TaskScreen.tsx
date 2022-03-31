@@ -4,6 +4,8 @@ import { Button, Text, View } from "react-native";
 import tw from "twrnc";
 import { PrimaryButton } from "../component/ui/PrimaryButton";
 import { RadioButtonComponent } from "../components/ui/radiobutton";
+import { QinTodoIcon } from "../component/ui/QinTodoIcon";
+import { Avater } from "../component/ui/Avater";
 
 export const bgColor = {
   red: "#EF4444",
@@ -93,6 +95,8 @@ const TaskScreen = (props: Props) => {
       <RadioButtonComponent color="today" />
       <RadioButtonComponent color="tomorrow" />
       <RadioButtonComponent color="other" />
+      <Avater />
+      <QinTodoIcon />
 
       <StatusBar style="auto" />
       <Button
