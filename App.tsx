@@ -1,99 +1,57 @@
-import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { Provider as PaperProvider } from "react-native-paper";
-import { RadioButtonComponent } from "./components/ui/radiobutton";
-import { Text, View } from "react-native";
-import tw from "twrnc";
-import { PrimaryButton } from "./component/ui/PrimaryButton";
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import TaskScreen from "./screens/TaskScreen";
+import ThemeScreen from "./screens/ThemeScreen";
+import AccountScreen from "./screens/AccountsScreen";
+import MyPageScreen from "./screens/MyPageScreen";
+import PrivacyPolicyScreen from "./screens/PrivacyPolicyScreen";
+import TermsOfServiceScreen from "./screens/TermsOfServiceScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 
-export const bgColor = {
-  red: "#EF4444",
-  blue: "#3B82F6",
-  gray: "#F1F5F9",
-  today: "#F43F5E",
-  tomorrow: "#FB923C",
-  other: "#FBBF24",
-} as const;
+const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const buttonProps = [
-    {
-      bgColor: bgColor.today,
-      title: "今日する",
-      str: "today",
-    },
-    {
-      bgColor: bgColor.tomorrow,
-      title: "明日する",
-      str: "tomorrow",
-    },
-    {
-      bgColor: bgColor.other,
-      title: "今度する",
-      str: "other",
-    },
-  ];
   return (
-    <PaperProvider>
-      <View style={tw`flex-1 justify-center items-center`}>
-        <Text style={tw`text-2xl text-red-700 font-bold`}>
-          Tailwind CSS on React Native!!!
-        </Text>
-        <View style={tw`flex-row`}>
-          {buttonProps.map((props) => (
-            <PrimaryButton
-              key={props.str}
-              bgColor={props.bgColor}
-              onPress={() => alert(props.str)}
-              title={props.title}
-              text="white"
-              isIcon={true}
-              size="md"
-            />
-          ))}
-        </View>
-        <PrimaryButton
-          bgColor={bgColor.blue}
-          onPress={() => alert("blue")}
-          title="保存する"
-          text="white"
-          size="lg"
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Task"
+          component={TaskScreen}
+          options={{ title: "タスク" }}
         />
-        <PrimaryButton
-          bgColor={bgColor.red}
-          onPress={() => alert("red")}
-          title="OK"
-          text="white"
-          size="modal"
+        <Stack.Screen
+          name="MyPage"
+          component={MyPageScreen}
+          options={{ title: "マイページ" }}
         />
-        <PrimaryButton
-          bgColor={bgColor.gray}
-          onPress={() => alert("gray")}
-          title="キャンセル"
-          text="black"
-          size="modal"
+        <Stack.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{ title: "プロフィール" }}
         />
-        <PrimaryButton
-          bgColor={bgColor.blue}
-          onPress={() => alert("連携")}
-          title="連携する"
-          text="white"
-          size="modal"
+        <Stack.Screen
+          name="Account"
+          component={AccountScreen}
+          options={{ title: "アカウント" }}
         />
-        <PrimaryButton
-          bgColor={bgColor.gray}
-          onPress={() => alert("解除")}
-          title="解除する"
-          text="black"
-          size="modal"
+        <Stack.Screen
+          name="Theme"
+          component={ThemeScreen}
+          options={{ title: "テーマ" }}
         />
-        <StatusBar style="auto" />
-        <RadioButtonComponent color="today" />
-        <RadioButtonComponent color="tomorrow" />
-        <RadioButtonComponent color="other" />
-      </View>
-    </PaperProvider>
+        <Stack.Screen
+          name="PrivacyPolicy"
+          component={PrivacyPolicyScreen}
+          options={{ title: "プライバシーポリシー" }}
+        />
+        <Stack.Screen
+          name="TermsOfService"
+          component={TermsOfServiceScreen}
+          options={{ title: "利用規約" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
-
 export default App;
