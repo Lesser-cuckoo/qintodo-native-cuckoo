@@ -3,6 +3,9 @@ import { StatusBar } from "expo-status-bar";
 import { Button, Text, View } from "react-native";
 import tw from "twrnc";
 import { PrimaryButton } from "../component/ui/PrimaryButton";
+import { RadioButtonComponent } from "../components/ui/radiobutton";
+import { QinTodoIcon } from "../component/ui/QinTodoIcon";
+import { Avater } from "../component/ui/Avater";
 import { TaskContainer } from "../component/TaskContainer";
 
 export const bgColor = {
@@ -91,6 +94,12 @@ const TaskScreen = (props: Props) => {
         text="black"
         size="modal"
       />
+      <RadioButtonComponent color="today" />
+      <RadioButtonComponent color="tomorrow" />
+      <RadioButtonComponent color="other" />
+      <Avater />
+      <QinTodoIcon />
+
       <StatusBar style="auto" />
       <Button
         title="MyPageへ"

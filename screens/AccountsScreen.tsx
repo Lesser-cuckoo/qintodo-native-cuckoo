@@ -1,3 +1,4 @@
+import { QinTodoIcon } from "../component/ui/QinTodoIcon";
 import React from "react";
 import { Text, View } from "react-native";
 import tw from "twrnc";
@@ -18,6 +19,16 @@ type Props = {
 
 const AccountScreen = (props: Props) => {
   const { navigation } = props;
+
+  navigation.setOptions({
+    headerTitle: () => {
+      return (
+        <View>
+          <QinTodoIcon />
+        </View>
+      );
+    },
+  });
 
   return (
     <View style={tw`flex-1 justify-center items-center`}>
