@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { Button, Text, View } from "react-native";
 import tw from "twrnc";
 import { PrimaryButton } from "../component/ui/PrimaryButton";
+import { TaskContainer } from "../component/TaskContainer";
 
 export const bgColor = {
   red: "#EF4444",
@@ -38,6 +39,7 @@ const TaskScreen = (props: Props) => {
   ];
   return (
     <View style={tw`flex-1 justify-center items-center`}>
+      <TaskContainer />
       <Text style={tw`text-2xl text-red-700 font-bold`}>
         Tailwind CSS on React Native!!!
       </Text>
