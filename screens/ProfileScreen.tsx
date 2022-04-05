@@ -1,5 +1,6 @@
+import { MyPageHeader } from "../component/MyPageHeader";
 import React from "react";
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import tw from "twrnc";
 import { PrimaryButton } from "../component/ui/PrimaryButton";
 
@@ -21,15 +22,19 @@ const ProfileScreen = (props: Props) => {
 
   return (
     <View style={tw`flex-1 justify-center items-center`}>
-      <Text style={tw`text-2xl text-red-700 font-bold`}>プロフィール</Text>
+      <MyPageHeader title="プロフィール" navigation={navigation} />
 
-      <PrimaryButton
-        bgColor={bgColor.blue}
-        title="タスクページへ"
-        onPress={() => navigation.navigate("Task")}
-        text="white"
-        size="modal"
-      />
+      <ScrollView>
+        <Text style={tw`text-2xl text-red-700 font-bold`}>プロフィール</Text>
+
+        <PrimaryButton
+          bgColor={bgColor.blue}
+          title="タスクページへ"
+          onPress={() => navigation.navigate("Task")}
+          text="white"
+          size="modal"
+        />
+      </ScrollView>
     </View>
   );
 };
