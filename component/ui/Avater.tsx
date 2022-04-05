@@ -6,7 +6,7 @@ import tw from "twrnc";
 
 export const Avater = () => {
   return (
-    <View style={tw`rounded-full overflow-hidden h-16 w-16`}>
+    <View style={tw`h-10 w-10`}>
       <Svg viewBox="0 0 20 20" fill="currentColor">
         <Path
           fill-rule="evenodd"
