@@ -1,9 +1,9 @@
-import { MyPageHeader } from "../component/MyPageHeader";
 import React from "react";
 import { ScrollView, Text, View } from "react-native";
 import tw from "twrnc";
 import { PrimaryButton } from "src/components/ui/PrimaryButton";
 import { signOut } from "src/libs/SupabaseClient";
+import { MyPageHeader } from "src/components/MyPageHeader";
 
 export const bgColor = {
   red: "#EF4444",
