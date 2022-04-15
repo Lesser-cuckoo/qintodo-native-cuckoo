@@ -2,6 +2,7 @@ import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
 import Icon from "react-native-vector-icons/AntDesign";
+import { MyPageHeader } from "src/components/MyPageHeader";
 
 export const bgColor = {
   red: "#EF4444",
@@ -21,6 +22,7 @@ const MyPageScreen = (props: Props) => {
 
   return (
     <ScrollView style={tw`flex-1`}>
+      <MyPageHeader title="設定" navigation={navigation} />
       <View style={tw`px-4 py-2 mt-5`}>
         <Text style={tw`text-gray-400 font-bold`}>設定</Text>
       </View>
