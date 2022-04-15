@@ -1,7 +1,7 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
-import { PrimaryButton } from "../component/ui/PrimaryButton";
+import Icon from "react-native-vector-icons/AntDesign";
 
 export const bgColor = {
   red: "#EF4444",
@@ -20,56 +20,61 @@ const MyPageScreen = (props: Props) => {
   const { navigation } = props;
 
   return (
-    <View style={tw`flex-1 justify-center items-center`}>
-      <Text style={tw`text-2xl text-red-700 font-bold`}>マイページ</Text>
-
-      <PrimaryButton
-        bgColor={bgColor.gray}
-        title="プロフィール"
-        text="black"
-        size="md"
+    <ScrollView style={tw`flex-1`}>
+      <View style={tw`px-4 py-2 mt-5`}>
+        <Text style={tw`text-gray-400 font-bold`}>設定</Text>
+      </View>
+      <TouchableOpacity
+        style={tw`px-4 py-3 flex flex-row justify-between`}
         onPress={() => navigation.navigate("Profile")}
-        // onPress={() => navigation.navigate("Profile", { name: "Jane" })}
-      />
-      <PrimaryButton
-        bgColor={bgColor.gray}
-        title="アカウント"
-        text="black"
-        size="md"
+      >
+        <Text style={tw`font-bold`}>プロフィール</Text>
+        <Icon size={20} color="gray" name="right" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={tw`px-4 py-3 flex flex-row justify-between`}
         onPress={() => navigation.navigate("Account")}
-        // onPress={() => navigation.navigate("Profile", { name: "Jane" })}
-      />
-      <PrimaryButton
-        bgColor={bgColor.gray}
-        title="テーマ"
-        text="black"
-        size="md"
+      >
+        <Text style={tw`font-bold`}>アカウント</Text>
+        <Icon size={20} color="gray" name="right" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={tw`px-4 py-3 flex flex-row justify-between`}
         onPress={() => navigation.navigate("Theme")}
-        // onPress={() => navigation.navigate("Profile", { name: "Jane" })}
-      />
-      <PrimaryButton
-        bgColor={bgColor.gray}
-        title="プライバシーポリシー"
-        text="black"
-        size="md"
+      >
+        <Text style={tw`font-bold`}>テーマ</Text>
+        <Icon size={20} color="gray" name="right" />
+      </TouchableOpacity>
+
+      <View style={tw`px-4 py-2 mt-5 `}>
+        <Text style={tw`text-gray-400 font-bold`}>サポート</Text>
+      </View>
+
+      <TouchableOpacity
+        style={tw`px-4 py-3 flex flex-row justify-between`}
         onPress={() => navigation.navigate("PrivacyPolicy")}
-        // onPress={() => navigation.navigate("Profile", { name: "Jane" })}
-      />
-      <PrimaryButton
-        bgColor={bgColor.gray}
-        title="利用規約"
+      >
+        <Text style={tw`font-bold`}>プライバシーポリシー</Text>
+        <Icon size={20} color="gray" name="right" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={tw`px-4 py-3 flex flex-row justify-between`}
         onPress={() => navigation.navigate("TermsOfService")}
-        text="black"
-        size="md"
-      />
-      <PrimaryButton
-        bgColor={bgColor.blue}
-        title="タスクページへ"
-        onPress={() => navigation.navigate("Task")}
-        text="white"
-        size="md"
-      />
-    </View>
+      >
+        <Text style={tw`font-bold`}>利用規約</Text>
+        <Icon size={20} color="gray" name="right" />
+      </TouchableOpacity>
+      <View style={tw`px-4 py-3`}>
+        <Text style={tw`font-bold`}>オープンソースライセンス</Text>
+      </View>
+      <View style={tw`px-4 py-3`}>
+        <Text style={tw`font-bold`}>お問い合わせ</Text>
+      </View>
+      <View style={tw`px-4 py-3 flex flex-row justify-between`}>
+        <Text style={tw`font-bold`}>バージョン</Text>
+        <Text style={tw`font-bold`}>1.0.0</Text>
+      </View>
+    </ScrollView>
   );
 };
 
