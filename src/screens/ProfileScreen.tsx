@@ -1,8 +1,8 @@
-import { Avater } from "../component/ui/Avater";
 import React from "react";
 import { Text, View } from "react-native";
+import { Avater } from "src/components/ui/Avater";
+import { PrimaryButton } from "src/components/ui/PrimaryButton";
 import tw from "twrnc";
-import { PrimaryButton } from "../component/ui/PrimaryButton";
 
 export const bgColor = {
   red: "#EF4444",
