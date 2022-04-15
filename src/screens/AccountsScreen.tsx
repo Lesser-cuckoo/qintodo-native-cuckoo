@@ -2,7 +2,8 @@ import { MyPageHeader } from "../component/MyPageHeader";
 import React from "react";
 import { ScrollView, Text, View } from "react-native";
 import tw from "twrnc";
-import { PrimaryButton } from "../component/ui/PrimaryButton";
+import { PrimaryButton } from "src/components/ui/PrimaryButton";
+import { signOut } from "src/libs/SupabaseClient";
 
 export const bgColor = {
   red: "#EF4444",
@@ -25,6 +26,14 @@ const AccountScreen = (props: Props) => {
       <MyPageHeader title="アカウント" navigation={navigation} />
       <ScrollView>
         <Text style={tw`text-2xl text-red-700 font-bold`}>アカウント</Text>
+
+        <PrimaryButton
+          bgColor={bgColor.red}
+          title="ログアウト"
+          onPress={signOut}
+          text="white"
+          size="modal"
+        />
 
         <PrimaryButton
           bgColor={bgColor.blue}

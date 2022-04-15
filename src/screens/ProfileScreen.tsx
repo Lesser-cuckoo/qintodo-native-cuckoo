@@ -2,7 +2,7 @@ import { MyPageHeader } from "../component/MyPageHeader";
 import React from "react";
 import { ScrollView, Text, View } from "react-native";
 import tw from "twrnc";
-import { PrimaryButton } from "../component/ui/PrimaryButton";
+import { PrimaryButton } from "src/components/ui/PrimaryButton";
 
 export const bgColor = {
   red: "#EF4444",
@@ -17,14 +17,15 @@ type Props = {
   navigation: any;
 };
 
-const ThemeScreen = (props: Props) => {
+const ProfileScreen = (props: Props) => {
   const { navigation } = props;
 
   return (
     <View style={tw`flex-1 justify-center items-center`}>
-      <MyPageHeader title="テーマ" navigation={navigation} />
+      <MyPageHeader title="プロフィール" navigation={navigation} />
+
       <ScrollView>
-        <Text style={tw`text-2xl text-red-700 font-bold`}>テーマ</Text>
+        <Text style={tw`text-2xl text-red-700 font-bold`}>プロフィール</Text>
 
         <PrimaryButton
           bgColor={bgColor.blue}
@@ -38,4 +39,4 @@ const ThemeScreen = (props: Props) => {
   );
 };
 
-export default ThemeScreen;
+export default ProfileScreen;
