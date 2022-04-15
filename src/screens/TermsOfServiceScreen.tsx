@@ -1,7 +1,8 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import tw from "twrnc";
 import { PrimaryButton } from "src/components/ui/PrimaryButton";
+import { MyPageHeader } from "src/components/MyPageHeader";
 
 export const bgColor = {
   red: "#EF4444",
@@ -21,15 +22,18 @@ const TermsOfServiceScreen = (props: Props) => {
 
   return (
     <View style={tw`flex-1 justify-center items-center`}>
-      <Text style={tw`text-2xl text-red-700 font-bold`}>利用規約</Text>
+      <MyPageHeader title="利用規約" navigation={navigation} />
+      <ScrollView>
+        <Text style={tw`text-2xl text-red-700 font-bold`}>利用規約</Text>
 
-      <PrimaryButton
-        bgColor={bgColor.blue}
-        title="タスクページへ"
-        onPress={() => navigation.navigate("Task")}
-        text="white"
-        size="modal"
-      />
+        <PrimaryButton
+          bgColor={bgColor.blue}
+          title="タスクページへ"
+          onPress={() => navigation.navigate("Task")}
+          text="white"
+          size="modal"
+        />
+      </ScrollView>
     </View>
   );
 };

@@ -1,8 +1,9 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import tw from "twrnc";
 import { PrimaryButton } from "src/components/ui/PrimaryButton";
 import { signOut } from "src/libs/SupabaseClient";
+import { MyPageHeader } from "src/components/MyPageHeader";
 
 export const bgColor = {
   red: "#EF4444",
@@ -22,23 +23,26 @@ const AccountScreen = (props: Props) => {
 
   return (
     <View style={tw`flex-1 justify-center items-center`}>
-      <Text style={tw`text-2xl text-red-700 font-bold`}>アカウント</Text>
+      <MyPageHeader title="アカウント" navigation={navigation} />
+      <ScrollView>
+        <Text style={tw`text-2xl text-red-700 font-bold`}>アカウント</Text>
 
-      <PrimaryButton
-        bgColor={bgColor.red}
-        title="ログアウト"
-        onPress={signOut}
-        text="white"
-        size="modal"
-      />
+        <PrimaryButton
+          bgColor={bgColor.red}
+          title="ログアウト"
+          onPress={signOut}
+          text="white"
+          size="modal"
+        />
 
-      <PrimaryButton
-        bgColor={bgColor.blue}
-        title="タスクページへ"
-        onPress={() => navigation.navigate("Task")}
-        text="white"
-        size="modal"
-      />
+        <PrimaryButton
+          bgColor={bgColor.blue}
+          title="タスクページへ"
+          onPress={() => navigation.navigate("Task")}
+          text="white"
+          size="modal"
+        />
+      </ScrollView>
     </View>
   );
 };
