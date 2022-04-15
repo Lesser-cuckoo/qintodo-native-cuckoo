@@ -11,7 +11,7 @@ export const MyPageHeader = (props: Props) => {
   const { title, navigation } = props;
 
   return (
-    <View style={tw` h-20 w-full relative`}>
+    <View style={tw` h-20 w-full relative bg-white`}>
       <View style={tw`mt-10`}>
         <View style={tw`m-auto`}>
           <Text style={tw`text-lg font-bold`}>{title}</Text>

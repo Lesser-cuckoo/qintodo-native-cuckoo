@@ -6,15 +6,17 @@ import tw from "twrnc";
 
 type Props = {
   rounded: boolean;
+  size: number;
 };
 
 export const Avater = (props: Props) => {
-  const { rounded } = props;
+  const { rounded, size } = props;
+  const AvaterSize = `h-${size} w-${size}`;
   return (
     <View
       style={tw`${
         rounded === true ? "rounded-full" : ""
-      } overflow-hidden  h-16 w-16`}
+      } overflow-hidden bg-blue-200 ${AvaterSize}`}
     >
       <Svg viewBox="0 0 20 20" fill="currentColor">
         <Path
