@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 import tw from "twrnc";
-import { PrimaryButton } from "../component/ui/PrimaryButton";
+import { PrimaryButton } from "src/components/ui/PrimaryButton";
 
 export const bgColor = {
   red: "#EF4444",
@@ -16,12 +16,14 @@ type Props = {
   navigation: any;
 };
 
-const ProfileScreen = (props: Props) => {
+const PrivacyPolicyScreen = (props: Props) => {
   const { navigation } = props;
 
   return (
     <View style={tw`flex-1 justify-center items-center`}>
-      <Text style={tw`text-2xl text-red-700 font-bold`}>プロフィール</Text>
+      <Text style={tw`text-2xl text-red-700 font-bold`}>
+        プライバシーポリシー
+      </Text>
 
       <PrimaryButton
         bgColor={bgColor.blue}
@@ -34,4 +36,4 @@ const ProfileScreen = (props: Props) => {
   );
 };
 
-export default ProfileScreen;
+export default PrivacyPolicyScreen;

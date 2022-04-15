@@ -2,10 +2,10 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Button, Text, View } from "react-native";
 import tw from "twrnc";
-import { PrimaryButton } from "../component/ui/PrimaryButton";
-import { RadioButtonComponent } from "../components/ui/radiobutton";
-import { QinTodoIcon } from "../component/ui/QinTodoIcon";
-import { Avater } from "../component/ui/Avater";
+import { PrimaryButton } from "src/components/ui/PrimaryButton";
+import { RadioButtonComponent } from "src/components/ui/RadioButton";
+import { QinTodoIcon } from "src/components/ui/QinTodoIcon";
+import { Avater } from "src/components/ui/Avater";
 
 export const bgColor = {
   red: "#EF4444",
