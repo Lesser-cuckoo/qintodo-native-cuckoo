@@ -2,11 +2,12 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Button, Text, View } from "react-native";
 import tw from "twrnc";
-import { PrimaryButton } from "../component/ui/PrimaryButton";
-import { RadioButtonComponent } from "../components/ui/radiobutton";
-import { QinTodoIcon } from "../component/ui/QinTodoIcon";
-import { Avater } from "../component/ui/Avater";
-import { TaskContainer } from "../component/TaskContainer";
+import { TaskContainer } from "src/components/TaskContainer";
+import { PrimaryButton } from "src/components/ui/PrimaryButton";
+import { RadioButtonComponent } from "src/components/ui/RadioButton";
+import { QinTodoIcon } from "src/components/ui/QinTodoIcon";
+import { Avater } from "src/components/ui/Avater";
+import { Header } from "src/components/Header";
 
 export const bgColor = {
   red: "#EF4444",
@@ -42,6 +43,7 @@ const TaskScreen = (props: Props) => {
   ];
   return (
     <View style={tw`flex-1 justify-center items-center`}>
+      <Header />
       <TaskContainer />
       <Text style={tw`text-2xl text-red-700 font-bold`}>
         Tailwind CSS on React Native!!!
