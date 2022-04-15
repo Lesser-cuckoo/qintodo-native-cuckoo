@@ -45,9 +45,7 @@ const TaskScreen = (props: Props) => {
     <View style={tw`flex-1 justify-center items-center`}>
       <Header />
       <TaskContainer />
-      <Text style={tw`text-2xl text-red-700 font-bold`}>
-        Tailwind CSS on React Native!!!
-      </Text>
+
       <View style={tw`flex-row`}>
         {buttonProps.map((props) => (
           <PrimaryButton
@@ -99,8 +97,6 @@ const TaskScreen = (props: Props) => {
       <RadioButtonComponent color="today" />
       <RadioButtonComponent color="tomorrow" />
       <RadioButtonComponent color="other" />
-      <Avater />
-      <QinTodoIcon />
 
       <StatusBar style="auto" />
       <Button
