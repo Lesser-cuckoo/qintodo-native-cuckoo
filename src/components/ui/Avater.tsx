@@ -4,9 +4,20 @@ import Svg, { Path } from "react-native-svg";
 
 import tw from "twrnc";
 
-export const Avater = () => {
+type Props = {
+  rounded: boolean;
+  size: number;
+};
+
+export const Avater = (props: Props) => {
+  const { rounded, size } = props;
+  const AvaterSize = `h-${size} w-${size}`;
   return (
-    <View style={tw`h-10 w-10`}>
+    <View
+      style={tw`${
+        rounded === true ? "rounded-full" : ""
+      } overflow-hidden bg-blue-200 ${AvaterSize}`}
+    >
       <Svg viewBox="0 0 20 20" fill="currentColor">
         <Path
           fill-rule="evenodd"

@@ -99,7 +99,7 @@ const TaskScreen = (props: Props) => {
       <RadioButtonComponent color="today" />
       <RadioButtonComponent color="tomorrow" />
       <RadioButtonComponent color="other" />
-      <Avater />
+      <Avater rounded size={16} />
       <QinTodoIcon />
 
       <StatusBar style="auto" />

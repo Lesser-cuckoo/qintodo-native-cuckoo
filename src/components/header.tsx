@@ -6,7 +6,7 @@ import { Avater } from "src/components/ui/Avater";
 
 export const Header = () => {
   return (
-    <View style={tw`relative h-22 w-full`}>
+    <View style={tw`relative h-22 w-full bg-white`}>
       <View style={tw`items-center mt-10 h-10`}>
         <View style={tw`m-auto`}>
           <QinTodoIcon />
@@ -14,7 +14,7 @@ export const Header = () => {
         <View
           style={tw`right-6 absolute rounded-full overflow-hidden bg-indigo-300`}
         >
-          <Avater />
+          <Avater rounded size={10} />
         </View>
       </View>
     </View>

@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 import tw from "twrnc";
@@ -39,8 +39,10 @@ export const PrimaryButton = (props: Props) => {
       style={size === "md" ? mdStyle : size === "lg" ? lgStyle : modalStyle}
       onPress={onPress}
     >
-      {isIcon && <AntDesign name="plus" style={tw`text-white pr-2`} />}
-      <Text style={tw`text-${text} font-bold`}>{title}</Text>
+      <View style={tw`m-auto flex flex-row items-center`}>
+        {isIcon && <AntDesign name="plus" style={tw`text-white pr-2`} />}
+        <Text style={tw`text-${text} font-bold`}>{title}</Text>
+      </View>
     </TouchableOpacity>
   );
 };

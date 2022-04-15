@@ -1,4 +1,4 @@
-import React, { VFC } from "react";
+import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
 import Icon from "react-native-vector-icons/AntDesign";
