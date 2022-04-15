@@ -1,8 +1,8 @@
-import { Avater } from "../component/ui/Avater";
-import { QinTodoIcon } from "../component/ui/QinTodoIcon";
 import { View } from "react-native";
 import React from "react";
 import tw from "twrnc";
+import { QinTodoIcon } from "src/components/ui/QinTodoIcon";
+import { Avater } from "src/components/ui/Avater";
 
 export const Header = () => {
   return (
