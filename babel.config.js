@@ -13,5 +13,10 @@ module.exports = function (api) {
       ],
       ["inline-dotenv"],
     ],
+    env: {
+      production: {
+        plugins: ["react-native-paper/babel"],
+      },
+    },
   };
 };
