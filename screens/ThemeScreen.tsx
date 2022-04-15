@@ -1,7 +1,7 @@
-import React from "react";
-import { Text, View } from "react-native";
+import React, { VFC } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
-import { PrimaryButton } from "../component/ui/PrimaryButton";
+import Icon from "react-native-vector-icons/AntDesign";
 
 export const bgColor = {
   red: "#EF4444",
@@ -12,24 +12,33 @@ export const bgColor = {
   other: "#FBBF24",
 } as const;
 
-type Props = {
-  navigation: any;
-};
-
-const ThemeScreen = (props: Props) => {
-  const { navigation } = props;
-
+const ThemeScreen: VFC = () => {
+  const handleClick = () => {
+    alert("clicked");
+  };
   return (
-    <View style={tw`flex-1 justify-center items-center`}>
-      <Text style={tw`text-2xl text-red-700 font-bold`}>テーマ</Text>
-
-      <PrimaryButton
-        bgColor={bgColor.blue}
-        title="タスクページへ"
-        onPress={() => navigation.navigate("Task")}
-        text="white"
-        size="modal"
-      />
+    <View style={tw`flex-1 pt-6`}>
+      <TouchableOpacity
+        style={tw`py-2 px-5 flex flex-row justify-between`}
+        onPress={handleClick}
+      >
+        <Text style={tw`font-bold text-base`}>端末の設定に合わせる</Text>
+        <Icon name="check" color="blue" size={24} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={tw`py-2 px-5 flex flex-row justify-between`}
+        onPress={handleClick}
+      >
+        <Text style={tw`font-bold text-base`}>ライト</Text>
+        <Icon name="check" color="blue" size={24} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={tw`py-2 px-5 flex flex-row justify-between`}
+        onPress={handleClick}
+      >
+        <Text style={tw`font-bold text-base`}>ダーク</Text>
+        <Icon name="check" color="blue" size={24} />
+      </TouchableOpacity>
     </View>
   );
 };
