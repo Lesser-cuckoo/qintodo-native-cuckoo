@@ -2,6 +2,7 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Button, Text, View } from "react-native";
 import tw from "twrnc";
+import { TaskContainer } from "src/components/TaskContainer";
 import { PrimaryButton } from "src/components/ui/PrimaryButton";
 import { RadioButtonComponent } from "src/components/ui/RadioButton";
 import { QinTodoIcon } from "src/components/ui/QinTodoIcon";
@@ -41,6 +42,7 @@ const TaskScreen = (props: Props) => {
   ];
   return (
     <View style={tw`flex-1 justify-center items-center`}>
+      <TaskContainer />
       <Text style={tw`text-2xl text-red-700 font-bold`}>
         Tailwind CSS on React Native!!!
       </Text>
