@@ -2,7 +2,7 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Button, View } from "react-native";
 import tw from "twrnc";
-import { Footer } from "../component/footer/Footer";
+import { Footer } from "../components/footer/Footer";
 
 export const bgColor = {
   red: "#EF4444",
