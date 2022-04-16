@@ -8,6 +8,7 @@ import { RadioButtonComponent } from "src/components/ui/RadioButton";
 import { QinTodoIcon } from "src/components/ui/QinTodoIcon";
 import { Avater } from "src/components/ui/Avater";
 import { Header } from "src/components/header";
+import { AppleLogo } from "src/components/ui/AppleLogo";
 
 export const bgColor = {
   red: "#EF4444",
