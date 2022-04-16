@@ -11,7 +11,6 @@ import ProfileScreen from "src/screens/ProfileScreen";
 import { Auth } from "src/components/Auth";
 import { UserContextProvider, useUser } from "src/components/UserContext";
 import { StatusBar } from "expo-status-bar";
-import { Footer } from "src/components/footer/Footer";
 
 const Stack = createNativeStackNavigator();
 
@@ -30,7 +29,6 @@ const Container = () => {
         <Stack.Screen name="TermsOfService" component={TermsOfServiceScreen} />
       </Stack.Navigator>
       <StatusBar style="auto" />
-      <Footer />
     </NavigationContainer>
   ) : (
     <Auth />
