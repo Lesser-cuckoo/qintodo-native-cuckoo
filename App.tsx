@@ -10,6 +10,7 @@ import TermsOfServiceScreen from "src/screens/TermsOfServiceScreen";
 import ProfileScreen from "src/screens/ProfileScreen";
 import { Auth } from "src/components/Auth";
 import { UserContextProvider, useUser } from "src/components/UserContext";
+import { StatusBar } from "expo-status-bar";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ const Container = () => {
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicyScreen} />
         <Stack.Screen name="TermsOfService" component={TermsOfServiceScreen} />
       </Stack.Navigator>
+      <StatusBar style="auto" />
     </NavigationContainer>
   ) : (
     <Auth />
