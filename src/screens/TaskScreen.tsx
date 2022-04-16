@@ -3,6 +3,8 @@ import { StatusBar } from "expo-status-bar";
 import { Button, View } from "react-native";
 import tw from "twrnc";
 import { Footer } from "../components/footer/Footer";
+import { Header } from "src/components/header";
+import { TaskContainer } from "src/components/TaskContainer";
 
 export const bgColor = {
   red: "#EF4444",
@@ -21,12 +23,14 @@ const TaskScreen = (props: Props) => {
   const { navigation } = props;
   return (
     <>
+      <Header />
       <View style={tw`flex-1 justify-center items-center`}>
         <StatusBar style="auto" />
         <Button
           title="MyPageへ"
           onPress={() => navigation.navigate("MyPage")}
         />
+        <TaskContainer />
       </View>
       <Footer />
     </>
