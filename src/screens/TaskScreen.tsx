@@ -24,7 +24,7 @@ const TaskScreen = (props: Props) => {
   return (
     <>
       <Header />
-      <View style={tw`flex-1 justify-center items-center`}>
+      <View style={tw`flex-1 justify-center items-center bg-white`}>
         <StatusBar style="auto" />
         <Button
           title="MyPageへ"
