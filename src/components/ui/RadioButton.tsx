@@ -1,6 +1,8 @@
 import * as React from "react";
 import { useState } from "react";
+import { View } from "react-native";
 import { RadioButton } from "react-native-paper";
+import tw from "twrnc";
 
 type Props = {
   color: "today" | "tomorrow" | "other";
@@ -25,12 +27,14 @@ export const RadioButtonComponent = (props: Props) => {
   };
 
   return (
-    <RadioButton.Group onValueChange={handleOnPress} value={value}>
-      <RadioButton.Android
-        value="radio"
-        color={TaskColor[color]}
-        // uncheckedColor={TaskColor[color]}
-      />
-    </RadioButton.Group>
+    <View style={tw`w-10`}>
+      <RadioButton.Group onValueChange={handleOnPress} value={value}>
+        <RadioButton.Android
+          value="radio"
+          color={TaskColor[color]}
+          // uncheckedColor={TaskColor[color]}
+        />
+      </RadioButton.Group>
+    </View>
   );
 };

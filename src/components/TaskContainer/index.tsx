@@ -1,189 +1,119 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  Dimensions,
-} from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, Dimensions } from "react-native";
+import tw from "twrnc";
 
 import Board, { Repository } from "react-native-dnd-board";
+import { getTodo, TodoType } from "src/libs/SupabaseClient";
+import { useUser } from "src/components/UserContext";
 
-const mockData = [
+const baseData: ColumnProps[] = [
   {
-    id: "1",
-    name: "Column 1",
-    rows: [
-      {
-        id: "11",
-        name: "Row 1 (Column 1)",
-      },
-      {
-        id: "12",
-        name: "Row 2 (Column 1)",
-      },
-      {
-        id: "13",
-        name: "Row 3 (Column 1)",
-      },
-      {
-        id: "14",
-        name: "Row 4 (Column 1)",
-      },
-    ],
+    id: "today",
+    text: "今日する",
+    rows: [],
   },
   {
-    id: "2",
-    name: "Column 2",
-    rows: [
-      {
-        id: "21",
-        name: "Row 1 (Column 2)",
-      },
-      {
-        id: "22",
-        name: "Row 2 (Column 2)",
-      },
-      {
-        id: "23",
-        name: "Row 3 (Column 2)",
-      },
-    ],
+    id: "tomorrow",
+    text: "明日する",
+    rows: [],
   },
   {
-    id: "3",
-    name: "Column 3",
-    rows: [
-      {
-        id: "31",
-        name: "Row 1 (Column 3)",
-      },
-      {
-        id: "32",
-        name: "Row 2 (Column 3)",
-      },
-    ],
+    id: "other",
+    text: "今度する",
+    rows: [],
   },
 ];
 
-let mockDataLength = mockData.length;
-const mockDataRowLength = {};
-mockData.forEach((column) => {
-  mockDataRowLength[column.id] = column.rows.length;
-});
+type CardProps = {
+  id: string;
+  task: string;
+};
+
+type ColumnProps = {
+  id: string;
+  text: string;
+  rows: CardProps[];
+};
 
 const COLUMN_WIDTH = Dimensions.get("window").width * 0.8;
 
 export const TaskContainer = () => {
-  const [repository] = useState(new Repository(mockData));
+  const { user } = useUser();
+  const [repository, setRepository] = useState(new Repository(baseData));
 
-  const addCard = (columnId) => {
-    const data = {
-      id: `${columnId}${++mockDataRowLength[columnId]}`,
-      name: `Row ${mockDataRowLength[columnId]} (Column ${columnId})`,
-    };
-
-    // Call api add row here
-    // Add row to the board
-    repository.addRow(columnId, data);
+  const updateData = async () => {
+    const data = baseData;
+    const today = await getTodo("today");
+    data[0].rows = today.map((todo) => {
+      return {
+        id: String(todo.id),
+        task: todo.task,
+      };
+    });
+    const tomorrow = await getTodo("tomorrow");
+    data[1].rows = tomorrow.map((todo) => {
+      return {
+        id: String(todo.id),
+        task: todo.task,
+      };
+    });
+    const other = await getTodo("other");
+    data[2].rows = other.map((todo) => {
+      return {
+        id: String(todo.id),
+        task: todo.task,
+      };
+    });
+    setRepository(new Repository(data));
   };
 
-  const updateCard = (cardId, data) => {
-    const dummy = data || { name: "Row updated" };
+  useEffect(() => {
+    if (user) {
+      updateData();
+    }
+  }, [user]);
 
-    // Call api update row here
-    // Update row on the board
-    repository.updateRow(cardId, dummy);
-  };
-
-  const deleteCard = (cardId) => {
-    // Call api delete row here
-    // Delete row on the board
-    repository.deleteRow(cardId);
-  };
-
-  const renderCard = ({ item }) => {
+  const renderCard = ({ item }: { item: TodoType }) => {
     return (
-      <View style={styles.card}>
-        <Text>{item.name}</Text>
-        <TouchableOpacity
-          hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
-          onPress={() => deleteCard(item.id)}
-        >
-          <Text>✕</Text>
-        </TouchableOpacity>
+      <View style={tw`py-1 mx-4`}>
+        <Text style={tw`text-lg`}>{item.task}</Text>
       </View>
     );
   };
 
-  const addColumn = () => {
-    mockDataRowLength[++mockDataLength] = 0;
-    const column = {
-      id: mockDataLength,
-      name: `Column ${mockDataLength}`,
-      rows: [],
-    };
+  const renderColumn = ({
+    item,
+    columnComponent,
+    layoutProps,
+  }: {
+    item: ColumnProps;
+    columnComponent: any;
+    layoutProps: any;
+  }) => {
+    let color = "text-[#FFCA3A]";
+    if (item.id == "today") color = "text-[#F43F5E]";
+    if (item.id == "tomorrow") color = "text-[#FB923C]";
 
-    // Call api add column here
-    mockData.push(column);
-
-    // Add column to the board
-    repository.addColumn(column);
-  };
-
-  const updateColumn = (columnId, data) => {
-    const dummy = data || { name: "Column name updated" };
-
-    // Call api update column here
-    const columnIndex = mockData.findIndex((column) => column.id === columnId);
-    if (columnIndex > -1) {
-      mockData[columnIndex].name = dummy.name;
-    }
-
-    // Update column on the board
-    repository.updateColumn(columnId, dummy);
-  };
-
-  const deleteColumn = (columnId) => {
-    // Call api delete column here
-    const columnIndex = mockData.findIndex((column) => column.id === columnId);
-    if (columnIndex > -1) {
-      mockData.splice(columnIndex, 1);
-    }
-
-    // Delete column on the board
-    repository.deleteColumn(columnId);
-  };
-
-  const renderColumn = ({ item, columnComponent, layoutProps, index }) => {
     return (
-      <View style={styles.column} {...layoutProps}>
-        <View style={styles.columnHeader}>
-          <Text style={styles.columnName}>{item.name}</Text>
-          <TouchableOpacity
-            hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
-            onPress={() => deleteColumn(item.id)}
-          >
-            <Text>✕</Text>
-          </TouchableOpacity>
+      <View {...layoutProps}>
+        <View style={tw`mt-4 mb-2`}>
+          <Text style={tw`font-bold text-2xl ${color}`}>{item.text}</Text>
         </View>
         {columnComponent}
-        <TouchableOpacity
-          style={styles.addCard}
-          onPress={() => addCard(item.id)}
-        >
-          <Text>+ Add Card</Text>
-        </TouchableOpacity>
       </View>
     );
   };
 
-  const onCardPress = (card) => {
-    console.log("Card ID: ", card.id);
+  const onCardPress = (card: TodoType) => {
+    alert("Card ID: " + card.id);
   };
 
-  const onDragEnd = (fromColumnId, toColumnId, card) => {
-    //
+  const onDragEnd = (
+    fromColumnId: string,
+    toColumnId: string,
+    card: TodoType
+  ) => {
+    alert(`from : ${fromColumnId} to: ${toColumnId} card: ${card.id}`);
   };
 
   return (
@@ -199,48 +129,3 @@ export const TaskContainer = () => {
     />
   );
 };
-
-const styles = StyleSheet.create({
-  column: {
-    backgroundColor: "#F8FAFB",
-    marginLeft: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderRadius: 4,
-  },
-  columnHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginBottom: 16,
-  },
-  columnName: {
-    fontWeight: "bold",
-  },
-  addColumn: {
-    marginRight: 12,
-    padding: 12,
-    minWidth: COLUMN_WIDTH,
-  },
-  card: {
-    borderRadius: 4,
-    borderWidth: 1,
-    borderColor: "#F6F7FB",
-    backgroundColor: "#FFFFFF",
-    paddingHorizontal: 24,
-    paddingVertical: 16,
-    marginBottom: 12,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  addCard: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgb(233, 233, 233)",
-    borderRadius: 4,
-    paddingVertical: 12,
-    borderWidth: 1,
-    borderColor: "#F5F6F8",
-  },
-});
