@@ -2,6 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import type { TaskType } from "src/libs/Datetime";
 import { getDate, getDateEnd } from "src/libs/Datetime";
+import "react-native-url-polyfill/auto";
 
 export const SUPABASE_URL = process.env.REACT_NATIVE_SUPABASE_URL;
 const SUPABASE_KEY = process.env.REACT_NATIVE_SUPABASE_KEY;
@@ -227,7 +228,7 @@ export const uploadAvatar = async (uid: string, file: File) => {
   return error ? false : true;
 };
 
-const getAvatarUrl = async (uid: string) => {
+export const getAvatarUrl = async (uid: string) => {
   const { error, signedURL } = await client.storage
     .from("avatars")
     .createSignedUrl(`avatar_${uid}.jpg`, 3600);
