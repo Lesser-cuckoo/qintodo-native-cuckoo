@@ -22,8 +22,8 @@ const ThemeScreen = (props: Props) => {
 
   const [isTheme, setTheme] = useState<"light" | "dark" | "other">("light");
 
-  const handleClick = () => {
-    alert("clicked");
+  const handleClick = (theme: "light" | "dark" | "other") => {
+    setTheme(theme);
   };
   return (
     <>
@@ -31,7 +31,7 @@ const ThemeScreen = (props: Props) => {
       <View style={tw`flex-1 pt-6 bg-white `}>
         <TouchableOpacity
           style={tw`py-2 px-5 flex flex-row justify-between`}
-          onPress={handleClick}
+          onPress={() => handleClick("other")}
         >
           <Text style={tw`font-bold text-base`}>端末の設定に合わせる</Text>
           {isTheme === "other" ? (
@@ -40,7 +40,7 @@ const ThemeScreen = (props: Props) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={tw`py-2 px-5 flex flex-row justify-between`}
-          onPress={handleClick}
+          onPress={() => handleClick("light")}
         >
           <Text style={tw`font-bold text-base`}>ライト</Text>
           {isTheme === "light" ? (
@@ -49,7 +49,7 @@ const ThemeScreen = (props: Props) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={tw`py-2 px-5 flex flex-row justify-between`}
-          onPress={handleClick}
+          onPress={() => handleClick("dark")}
         >
           <Text style={tw`font-bold text-base`}>ダーク</Text>
           {isTheme === "dark" ? (
