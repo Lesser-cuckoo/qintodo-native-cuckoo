@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
 import Icon from "react-native-vector-icons/AntDesign";
@@ -20,33 +20,41 @@ type Props = {
 const ThemeScreen = (props: Props) => {
   const { navigation } = props;
 
-  const handleClick = () => {
-    alert("clicked");
+  const [isTheme, setTheme] = useState<"light" | "dark" | "other">("light");
+
+  const handleClick = (theme: "light" | "dark" | "other") => {
+    setTheme(theme);
   };
   return (
     <>
       <MyPageHeader title="テーマ" navigation={navigation} />
-      <View style={tw`flex-1 pt-6`}>
+      <View style={tw`flex-1 pt-6 bg-white `}>
         <TouchableOpacity
           style={tw`py-2 px-5 flex flex-row justify-between`}
-          onPress={handleClick}
+          onPress={() => handleClick("other")}
         >
           <Text style={tw`font-bold text-base`}>端末の設定に合わせる</Text>
-          <Icon name="check" color="blue" size={24} />
+          {isTheme === "other" ? (
+            <Icon name="check" color="blue" size={24} />
+          ) : null}
         </TouchableOpacity>
         <TouchableOpacity
           style={tw`py-2 px-5 flex flex-row justify-between`}
-          onPress={handleClick}
+          onPress={() => handleClick("light")}
         >
           <Text style={tw`font-bold text-base`}>ライト</Text>
-          <Icon name="check" color="blue" size={24} />
+          {isTheme === "light" ? (
+            <Icon name="check" color="blue" size={24} />
+          ) : null}
         </TouchableOpacity>
         <TouchableOpacity
           style={tw`py-2 px-5 flex flex-row justify-between`}
-          onPress={handleClick}
+          onPress={() => handleClick("dark")}
         >
           <Text style={tw`font-bold text-base`}>ダーク</Text>
-          <Icon name="check" color="blue" size={24} />
+          {isTheme === "dark" ? (
+            <Icon name="check" color="blue" size={24} />
+          ) : null}
         </TouchableOpacity>
       </View>
     </>
