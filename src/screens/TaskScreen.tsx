@@ -23,13 +23,9 @@ const TaskScreen = (props: Props) => {
   const { navigation } = props;
   return (
     <>
-      <Header />
+      <Header navigation={navigation} />
       <View style={tw`flex-1 justify-center items-center`}>
         <StatusBar style="auto" />
-        <Button
-          title="MyPageへ"
-          onPress={() => navigation.navigate("MyPage")}
-        />
         <TaskContainer />
       </View>
       <Footer />

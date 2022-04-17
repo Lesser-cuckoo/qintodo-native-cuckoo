@@ -26,7 +26,7 @@ const ThemeScreen = (props: Props) => {
   return (
     <>
       <MyPageHeader title="テーマ" navigation={navigation} />
-      <View style={tw`flex-1 pt-6`}>
+      <View style={tw`flex-1 pt-6 bg-white `}>
         <TouchableOpacity
           style={tw`py-2 px-5 flex flex-row justify-between`}
           onPress={handleClick}
